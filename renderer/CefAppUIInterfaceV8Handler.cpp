@@ -55,7 +55,8 @@ namespace JsCefHelper {
 		{
 			CefRefPtr<CefProcessMessage> message;
 			CefRefPtr<CefListValue> messageArgs;
-			printf("CefAppUIInterfaceV8Handler: Execute: %s\n", name.c_str());
+			std::string utf8Name = name;
+			printf("CefAppUIInterfaceV8Handler: Execute: %s\n", utf8Name.c_str());
 			if (name == "init")
 			{
 				m_cefJsContext = CefV8Context::GetCurrentContext();

@@ -34,7 +34,11 @@
 #undef DBF_PRINTF
 #endif
 
+#ifdef _DEBUG
 #define DBF_PRINTF(format, ...) if(stderr) { fprintf(stderr, format "\n", __VA_ARGS__); }
+#else
+#define DBF_PRINTF(format, ...)
+#endif
 
 namespace JsCefHelper {
 	namespace renderer {

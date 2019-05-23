@@ -54,7 +54,6 @@ namespace JsCefHelper {
 
 			cefSettings.multi_threaded_message_loop = 0; //needed for MFC projects (unless we want to implement custom message-loop)
 			cefSettings.pack_loading_disabled = 0;
-			cefSettings.single_process = 0;
 #if defined(CEF_USE_SANDBOX) && CEF_USE_SANDBOX
 			// Manage the life span of the sandbox information object. This is necessary
 			// for sandbox support on Windows. See cef_sandbox_win.h for complete details.

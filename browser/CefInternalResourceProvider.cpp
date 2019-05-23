@@ -139,6 +139,49 @@ namespace JsCefHelper {
 			}
 			return mimetype;
 		}
+		
+		int CefInternalResourceProvider::urldecode(const char* source, char* dest, int destbufsize)
+		{
+			int num = 0, i, hexv, index = 0;
+			int retval = 0;
+			while (*source && index < destbufsize)
+			{
+				if (*source == '%')
+				{
+					num = 0;
+					retval = 0;
+					for (i = 0; i < 2; i++)
+					{
+						*source++;
+						if (*(source) < ':')
+						{
+							num = *(source)-48;
+						}
+						else if (*(source) > '@' && *(source) < '[')
+						{
+							num = (*(source)-'A') + 10;
+						}
+						else
+						{
+							num = (*(source)-'a') + 10;
+						}
+
+						if ((16 * (1 - i)))
+							num = (num * 16);
+						retval += num;
+					}
+					dest[index] = retval;
+					index++;
+				}
+				else
+				{
+					dest[index] = *source;
+					index++;
+				}
+				*source++;
+			}
+			return index;
+		}
 
 	} // namespace browser
 } // namespace JsCefHelper
