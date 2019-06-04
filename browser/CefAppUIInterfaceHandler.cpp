@@ -23,6 +23,8 @@
 #include <include/cef_thread.h>
 #include <include/cef_waitable_event.h>
 
+#include "CefBrowserApp.h"
+
 namespace JsCefHelper {
 	namespace browser {
 		class CefAppUIInterfaceHandler::ExecuteResultHandlerImpl : public ExecuteResultHandler
@@ -38,7 +40,7 @@ namespace JsCefHelper {
 				CefRefPtr<CefListValue> msgArgs;
 				this->returned = false;
 				this->browser = browser;
-				this->message = CefProcessMessage::Create("jscefappuiif_app_call");
+				this->message = CefProcessMessage::Create("JsCefHelperif_app_call");
 				msgArgs = this->message->GetArgumentList();
 				msgArgs->SetSize(5);
 				msgArgs->SetString(0, lookupKey);
@@ -121,7 +123,7 @@ namespace JsCefHelper {
 
 			void Execute() override {
 				bool result = this->handler->initRunner();
-				CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("jscefappuiif_app_call");
+				CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("JsCefHelperif_app_call");
 				CefRefPtr<CefListValue> msgArgs = message->GetArgumentList();
 				msgArgs->SetSize(2);
 				msgArgs->SetString(0, lookupKey);
@@ -230,7 +232,7 @@ namespace JsCefHelper {
 		CefRefPtr<FrontExecuteFuture> CefAppUIInterfaceHandler::frontExecute(const std::string& method, CefRefPtr<CefListValue>& arguments)
 		{
 			CefRefPtr<FrontExecuteFutureImpl> future = new FrontExecuteFutureImpl();
-			CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("jscefappuiif_app_call");
+			CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("JsCefHelperif_app_call");
 			CefRefPtr<CefListValue> msgArgs = message->GetArgumentList();
 			int i;
 			frontExecuteCallIdLock.Acquire();
@@ -253,7 +255,7 @@ namespace JsCefHelper {
 		}
 		bool CefAppUIInterfaceHandler::contextChanged(const std::string& type, const std::string& data)
 		{
-			CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("jscefappuiif_app_call");
+			CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("JsCefHelperif_app_call");
 			CefRefPtr<CefListValue> msgArgs = message->GetArgumentList();
 			int i;
 			msgArgs->SetSize(4);

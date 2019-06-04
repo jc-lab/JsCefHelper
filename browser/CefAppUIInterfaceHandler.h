@@ -60,10 +60,12 @@ namespace JsCefHelper {
 		};
 
 		class CBrowserWindow;
+		class CefBrowserClient;
 		class CefAppUIInterfaceHandler : public virtual CefBaseRefCounted {
 			DISALLOW_COPY_AND_ASSIGN(CefAppUIInterfaceHandler);
 
 			friend class CBrowserWindow;
+			friend class CefBrowserClient;
 
 		private:
 			class InitTask;

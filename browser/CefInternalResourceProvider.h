@@ -43,7 +43,7 @@ namespace JsCefHelper {
 			static std::string ResolveMimeFromUrl(const std::string& url);
 			static int urldecode(const char* source, char* dest, int destbufsize);
 
-			virtual CefRefPtr<CefStreamResourceHandler> ReadResource(const std::string& resource_name) = 0;
+			virtual CefRefPtr<CefResourceHandler> ReadResource(const std::string& resource_name) = 0;
 		};
 
 	}

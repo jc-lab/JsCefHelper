@@ -129,7 +129,7 @@ namespace JsCefHelper {
 			Lock();
 			interface_context_map_t::iterator contextIter = m_interfaces.find((void*)frame->GetIdentifier());
 			if (contextIter != m_interfaces.end()) {
-				CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("jscefappuiif_delctxs");
+				CefRefPtr<CefProcessMessage> message = CefProcessMessage::Create("JsCefHelperif_delctxs");
 				CefRefPtr<CefListValue> messageArgs = message->GetArgumentList();
 				size_t index = 0;
 				messageArgs->SetSize(contextIter->second.size());
@@ -146,7 +146,7 @@ namespace JsCefHelper {
 		/**
 		 * message arguments
 		 * 
-		 * callJsCefAppUIInterface
+		 * callJsCefHelperInterface
 		 * - lookupKey
 		 * - [arguments]
 		 */
@@ -157,7 +157,7 @@ namespace JsCefHelper {
 		{
 			std::string name = message->GetName();
 			CefRefPtr<CefListValue> arguments = message->GetArgumentList();
-			if (name == "jscefappuiif_app_call")
+			if (name == "JsCefHelperif_app_call")
 			{
 				if (arguments->GetSize() >= 2)
 				{
@@ -170,7 +170,7 @@ namespace JsCefHelper {
 						iterInterface->second->callAppUIInterfaceImpl(iterInterface->second, methodName, arguments, 2);
 					}
 					else {
-						DBF_PRINTF("OnProcessMessageReceived[%p]: callJsCefAppUIInterface: AppUIInterface[%s] destoyed", browser.get(), lookupKey.c_str());
+						DBF_PRINTF("OnProcessMessageReceived[%p]: callJsCefHelperInterface: AppUIInterface[%s] destoyed", browser.get(), lookupKey.c_str());
 					}
 					Unlock();
 				}

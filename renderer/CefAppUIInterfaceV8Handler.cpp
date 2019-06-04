@@ -64,13 +64,13 @@ namespace JsCefHelper {
 				m_cefJsFuncs["onContextChanged"] = m_obj->GetValue("onContextChanged");
 				m_cefJsFuncs["onExecuteResponse"] = m_obj->GetValue("onExecuteResponse");
 				m_cefJsFuncs["onFrontExecuteRequest"] = m_obj->GetValue("onFrontExecuteRequest");
-				message = CefProcessMessage::Create("jscefappuiif_newctx");
+				message = CefProcessMessage::Create("JsCefHelperif_newctx");
 				messageArgs = message->GetArgumentList();
 				messageArgs->SetSize(2);
 				messageArgs->SetString(0, m_uniqueKey);
 				messageArgs->SetString(1, m_viewName);
 			} else {
-				message = CefProcessMessage::Create("jscefappuiif_front_exec");
+				message = CefProcessMessage::Create("JsCefHelperif_front_exec");
 				// uniqueKey, methodName[, arguments...]
 				messageArgs = message->GetArgumentList();
 				messageArgs->SetSize(2 + arguments.size());

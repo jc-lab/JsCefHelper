@@ -30,6 +30,8 @@
 
 #include "CefAppUIInterfaceHandlerFactory.h"
 
+#include "CefBrowserClient.h"
+
 // Need #include <afxwin.h> in cpp file
 
 namespace JsCefHelper {
@@ -43,8 +45,6 @@ namespace JsCefHelper {
 		public:
 			static const LONG WM_DOLOADCEF;
 			static const LONG WM_CUSTOM;
-
-			class CefBrowserClient;
 
 		private:
 			CStatic m_view_webview;
@@ -78,6 +78,8 @@ namespace JsCefHelper {
 			void loadURL(const char* url, int len = -1) override;
 			void loadURL(const std::string& url) override;
 			bool loadCefRequest(const CefRefPtr<CefRequest> & request) override;
+
+			CefRefPtr<CefBrowserClient> getCefBrowserClient() const;
 		};
 
 	} // namespace browser

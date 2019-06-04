@@ -53,8 +53,8 @@ namespace JsCefHelper {
 			CefResourceManager* cef_resource_manager() const { return cef_resource_manager_.get(); }
 
 			template<typename T>
-			void AddResourceProvider(T provider, int order, const std::string& identifier);
-
+			void AddResourceProvider(T provider, int order, const std::string& identifier);// { throw std::exception("ASSERT"); }
+		
 			template<>
 			void AddResourceProvider<CefResourceManager::Provider*>(CefResourceManager::Provider* provider, int order, const std::string& identifier)
 			{
