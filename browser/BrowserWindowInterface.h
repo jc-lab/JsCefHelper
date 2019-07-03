@@ -40,7 +40,7 @@ namespace JsCefHelper {
 		public:
 			virtual void doLoadCef() = 0;
 
-			virtual LRESULT OnLoadCef(WPARAM wParam = NULL, LPARAM lParam = NULL) = 0;
+			//virtual afx_msg LRESULT OnLoadCef(WPARAM wParam = NULL, LPARAM lParam = NULL) = 0;
 
 			virtual CefRefPtr<CefBrowser> getCefBrowser() = 0;
 			virtual CefRefPtr<CefBrowser> getCefBrowserWait(DWORD dwTimeout = INFINITE) = 0;

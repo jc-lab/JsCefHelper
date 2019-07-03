@@ -228,11 +228,14 @@ namespace JsCefHelper {
 		}
 		void CefBrowserClient::OnBeforeClose(CefRefPtr<CefBrowser> browser)
 		{
-			m_browser = NULL;
-			if (cefClientDelegate.get()) {
-				CefRefPtr<CefLifeSpanHandler> handler = cefClientDelegate->GetLifeSpanHandler();
-				if (handler.get()) {
-					handler->OnBeforeClose(browser);
+			if (m_browser != NULL && browser->GetIdentifier() == m_browser->GetIdentifier())
+			{
+				m_browser = NULL;
+				if (cefClientDelegate.get()) {
+					CefRefPtr<CefLifeSpanHandler> handler = cefClientDelegate->GetLifeSpanHandler();
+					if (handler.get()) {
+						handler->OnBeforeClose(browser);
+					}
 				}
 			}
 		}

@@ -69,8 +69,8 @@ namespace JsCefHelper {
 			virtual afx_msg void OnSize(UINT nType, int cx, int cy);
 			virtual afx_msg void OnClose();
 
-			virtual LRESULT OnDisplayChange(WPARAM wParam, LPARAM lParam);
-			LRESULT OnLoadCef(WPARAM wParam =  NULL, LPARAM lParam = NULL) override;
+			virtual afx_msg LRESULT OnDisplayChange(WPARAM wParam, LPARAM lParam);
+			afx_msg LRESULT OnLoadCef(WPARAM wParam = NULL, LPARAM lParam = NULL);// override;
 
 			CefRefPtr<CefBrowser> getCefBrowser() override;
 			CefRefPtr<CefBrowser> getCefBrowserWait(DWORD dwTimeout = INFINITE) override;

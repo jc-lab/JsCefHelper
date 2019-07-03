@@ -63,7 +63,7 @@ namespace JsCefHelper {
 			}
 		}
 
-		LRESULT CBrowserWindow::OnLoadCef(WPARAM wParam, LPARAM lParam)
+		afx_msg LRESULT CBrowserWindow::OnLoadCef(WPARAM wParam, LPARAM lParam)
 		{
 			bool res;
 			RECT rectDesktop = { 0 };
