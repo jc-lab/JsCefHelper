@@ -28,7 +28,7 @@ namespace JsCefHelper {
 		class CefBrowserApp;
 		class CefAppUIInterfaceHandlerFactory;
 
-		class CefBrowserClient : public CefClient, public CefLifeSpanHandler, public CefRequestHandler, public CefContextMenuHandler {
+		class CefBrowserClient : public CefClient, public CefLifeSpanHandler, public CefRequestHandler, public CefContextMenuHandler, public CefLoadHandler {
 		private:
 			IMPLEMENT_REFCOUNTING(CefBrowserClient);
 
@@ -167,6 +167,12 @@ namespace JsCefHelper {
 			virtual void OnRenderViewReady(CefRefPtr<CefBrowser> browser) OVERRIDE;
 			virtual void OnRenderProcessTerminated(CefRefPtr<CefBrowser> browser,
 				TerminationStatus status) OVERRIDE;
+			// ========== CefLoadHandler ==========
+			void OnLoadError(CefRefPtr<CefBrowser> browser,
+				CefRefPtr<CefFrame> frame,
+				ErrorCode errorCode,
+				const CefString& errorText,
+				const CefString& failedUrl);
 
 			void loadUrl(const std::string& url);
 			std::string swapLoadUrl();
